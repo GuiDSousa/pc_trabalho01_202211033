@@ -1,8 +1,7 @@
 package model;
 
 import java.util.concurrent.Semaphore;
-import view.Painel;
-import view.Grafico;
+
 
 public class CamadaFisicaReceptora {
 	public static Semaphore semaforo;
@@ -14,19 +13,11 @@ public class CamadaFisicaReceptora {
 
 		try {
 
-			Painel.CamadasReceptoras.expandirCamadaFisica();
-			Painel.CamadasReceptoras.limparTextoCamadas();
-			Painel.CamadasReceptoras.camadaFisica("Recebendo o Fluxo Bruto de Bits: \n\n");
-
-
 			int [] fluxoBrutoDeBits = fluxoBrutoDeBitsPontoB;
 			System.out.println("\tFluxo Bruto de Bits: ");
 			Thread.sleep(velocidade);
 
-			Painel.GRAFICO.semaforoEnd.acquire();
-
 			System.out.println ("\n\n\n|Bits Brutos Manipulados|");
-			Painel.CamadasReceptoras.camadaFisica("\n\t|Bits Brutos Manipulados|\n");
 			Thread.sleep(velocidade);
 			for (int b : fluxoBrutoDeBits) {
 				System.out.println("\t");
@@ -34,29 +25,23 @@ public class CamadaFisicaReceptora {
 			}
 			System.out.println("\n\n\n");
 
-			Grafico.Codificacao tipoDeCodificacao = Painel.GRAFICO.codificacaoSelecionada();
 
 			switch (tipoDeCodificacao) {
 				case BINARIA:
-					Painel.CAMADAS_RECEPTORAS.camadaFisica("\n|Decodificacao Binaria|\n");
 					fluxoBrutoDeBits = decodificacaoBinaria(fluxoBrutoDeBits);
 					break;
-				case MANCHESTER
-					Painel.CAMADAS_RECEPTORAS.camadaFisica("\n|Decodificacao Manchester|\n");
+				case MANCHESTER:
 					fluxoBrutoDeBits = decodificacaoManchester(fluxoBrutoDeBits);
 					break;
-				case MANCHESTER_DIFERENCIAL
-					Painel.CAMADAS_RECEPTORAS.camadaFisica("\n|Decodificacao Manchester Diferencial|\n");
+				case MANCHESTER_DIFERENCIAL:
 					fluxoBrutoDeBits = decodificacaoManchesterDiferencial(fluxoBrutoDeBits);
 					break;
 			}
 			System.out.println("\n\t|Bits Brutos Decodificados|");
-			Painel.CAMADAS_RECEPTORAS.camadaFisica("\n\t|Bits Brutos Decodificados|\n");
 			Thread.sleep(velocidade);
 
 			for (int b : fluxoBrutoDeBits) {
 				System.out.println("\t" + b);
-				Painel.CAMADAS_RECEPTORAS.camadaFisica(imprimirBits(b) + "\n");
 				Thread.sleep(velocidade);
 			}
 			System.out.println("\n\n\n");
@@ -64,12 +49,10 @@ public class CamadaFisicaReceptora {
 			int [] quadro = bitsParaInteiros(fluxoBrutoDeBits);
 
 			System.out.println("\n\tBits por inteiro: ");
-			Painel.CAMADAS_RECEPTORAS.camadaFisica("\n\tBits por inteiro: \n");
 			Thread.sleep(velocidade);
 
 			for (int c : quadro) {
 				System.out.println("\tInteiro ["+c+"] - ");
-				Painel.CAMADAS_RECEPTORAS.camadaDisica ( "["+c+"] - " + imprimirBits(c) + "\n");
 				Thread.sleep(velocidade);
 			}
 			System.out.println("\n\n\n");
@@ -81,7 +64,7 @@ public class CamadaFisicaReceptora {
 	}
 
 	public static int[] bitsParaInteiros(int[] vetorDeBits) {
-		int adcionar = 0;
+		int adicionar = 0;
 		int reduzir = 0;
 		int tamanho = vetorDeBits.length;
 
@@ -89,11 +72,11 @@ public class CamadaFisicaReceptora {
 
 		if (numeroDeBitsUltimoInteiro <= 24) {
 			if (numeroDeBitsUltimoInteiro <= 8) {
-				adicionar = 24 - numeroDeBitsUltimoInteiro;
+				adicionar +=1;
 			} else if (numeroDeBitsUltimoInteiro <= 16) {
-				adicionar = 16 - numeroDeBitsUltimoInteiro;
+				adicionar += 2;
 			} else {
-				adicionar = 8 - numeroDeBitsUltimoInteiro;
+				adicionar+=3;
 			}
 
 			reduzir = 1;
@@ -121,8 +104,9 @@ public class CamadaFisicaReceptora {
 					novoInteiro = 0;
 				}
 			}
-			return vetorDeInteiros;
 		}
+		return vetorDeInteiros;
+
 	}
 
 	private static int[] decodificacaoBinaria(int[] quadro) {
