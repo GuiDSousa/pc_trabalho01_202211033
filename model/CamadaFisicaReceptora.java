@@ -19,24 +19,27 @@ public class CamadaFisicaReceptora {
 
 			System.out.println ("\n\n\n|Bits Brutos Manipulados|");
 			Thread.sleep(velocidade);
+
+
 			for (int b : fluxoBrutoDeBits) {
 				System.out.println("\t");
 				Thread.sleep(velocidade);
 			}
+
 			System.out.println("\n\n\n");
 
-
-			switch (tipoDeCodificacao) {
-				case BINARIA:
-					fluxoBrutoDeBits = decodificacaoBinaria(fluxoBrutoDeBits);
+			switch (AplicacaoTransmissora.tipoDeCodificacao) {
+				case AplicacaoTransmissora.BINARIA:
+					fluxoBrutoDeBits = decodificacaoBinaria(fluxoBrutoDeBits);//DECOFICACAO BINARIA
 					break;
-				case MANCHESTER:
-					fluxoBrutoDeBits = decodificacaoManchester(fluxoBrutoDeBits);
+				case AplicacaoTransmissora.MANCHESTER:
+					fluxoBrutoDeBits = decodificacaoManchester(fluxoBrutoDeBits);//DECOFICACAO MANCHESTER
 					break;
-				case MANCHESTER_DIFERENCIAL:
-					fluxoBrutoDeBits = decodificacaoManchesterDiferencial(fluxoBrutoDeBits);
+				case AplicacaoTransmissora.MANCHESTER_DIFERENCIAL:
+					fluxoBrutoDeBits = decodificacaoManchesterDiferencial(fluxoBrutoDeBits);//DECOFICACAO MANCHESTER DIFERENCIAL
 					break;
 			}
+
 			System.out.println("\n\t|Bits Brutos Decodificados|");
 			Thread.sleep(velocidade);
 

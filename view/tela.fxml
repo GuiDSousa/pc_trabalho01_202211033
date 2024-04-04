@@ -2,17 +2,21 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SplitMenuButton?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.effect.Shadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.telaController">
    <children>
       <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="1000.0">
         <menus>
@@ -38,7 +42,7 @@
             <Image url="@../util/pc_transmissor.png" />
          </image>
       </ImageView>
-      <TextArea layoutX="198.0" layoutY="154.0" prefHeight="99.0" prefWidth="139.0" promptText="Digite sua mensagem">
+      <TextArea fx:id="transmissor" layoutX="198.0" layoutY="154.0" prefHeight="68.0" prefWidth="139.0" promptText="Digite e aperte no mouse para enviar" scrollLeft="1.0">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
@@ -49,23 +53,22 @@
             <Cursor fx:constant="TEXT" />
          </cursor>
       </TextArea>
-      <TextArea layoutX="689.0" layoutY="154.0" prefHeight="99.0" prefWidth="139.0" promptText="Digite sua mensagem">
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-         <font>
-            <Font size="15.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="TEXT" />
-         </cursor>
-      </TextArea>
-      <SplitMenuButton layoutX="400.0" layoutY="482.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="200.0" text="SELECIONAR CODIFICAÇÃO">
+      <SplitMenuButton fx:id="menu" layoutX="400.0" layoutY="482.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="200.0" text="SELECIONAR CODIFICAÇÃO">
         <items>
-          <MenuItem mnemonicParsing="false" text="BINÁRIA" />
-          <MenuItem mnemonicParsing="false" text="MANCHESTER" />
-            <MenuItem mnemonicParsing="false" text="MANCHESTER DIFERENCIAL" />
+          <MenuItem fx:id="binario" mnemonicParsing="false" text="BINÁRIA" />
+          <MenuItem fx:id="manchester" mnemonicParsing="false" text="MANCHESTER" />
+            <MenuItem fx:id="manchesterDiferencial" mnemonicParsing="false" text="MANCHESTER DIFERENCIAL" />
         </items>
       </SplitMenuButton>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="68.0" layoutX="690.0" layoutY="153.0" stroke="BLACK" strokeType="INSIDE" width="136.0" />
+      <Label fx:id="receptor" layoutX="693.0" layoutY="158.0" prefHeight="66.0" prefWidth="127.0" text="Label" textAlignment="CENTER" />
+      <Button fx:id="enviar" layoutX="400.0" layoutY="360.0" mnemonicParsing="false" onAction="#enviarButton" prefHeight="52.0" prefWidth="47.0" text="Button">
+         <effect>
+            <Shadow />
+         </effect>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
    </children>
 </AnchorPane>

@@ -16,7 +16,6 @@ public class CamadaAplicacaoReceptora {
                 mensagem += arrayCaracteres[i];
                 Thread.sleep(velocidade);
             }
-
             Thread.sleep(velocidade);
             AplicacaoReceptora.aplicacaoReceptora(mensagem);
         } catch (InterruptedException e) {

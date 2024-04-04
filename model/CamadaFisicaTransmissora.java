@@ -25,19 +25,7 @@ public class CamadaFisicaTransmissora {
 				Thread.sleep(velocidade);
 			}
 			System.out.println();
-      
 
-			switch (tipoDeCodificacao) {
-				case BINARIA:
-					fluxoBrutoDeBits = codificacaoBinaria(fluxoBrutoDeBits);
-					break;
-				case MANCHESTER:
-					fluxoBrutoDeBits = codificacaoManchester(fluxoBrutoDeBits);
-					break;
-				case MANCHESTER_DIFERENCIAL:
-					fluxoBrutoDeBits = codificacaoManchesterDiferencial(fluxoBrutoDeBits);
-					break;
-			}
 			Thread.sleep(velocidade);
 			Thread.sleep(velocidade);
 			System.out.println("\n\tBits Brutos Codificados: ");
@@ -47,6 +35,19 @@ public class CamadaFisicaTransmissora {
 				Thread.sleep(velocidade);
 			}
 			System.out.println();
+
+			switch (AplicacaoTransmissora.tipoDeCodificacao) {
+				case AplicacaoTransmissora.BINARIA:
+					fluxoBrutoDeBits = codificacaoBinaria(fluxoBrutoDeBits);//DECOFICACAO BINARIA
+					break;
+				case AplicacaoTransmissora.MANCHESTER:
+					fluxoBrutoDeBits = codificacaoManchester(fluxoBrutoDeBits);//DECOFICACAO MANCHESTER
+					break;
+				case AplicacaoTransmissora.MANCHESTER_DIFERENCIAL:
+					fluxoBrutoDeBits = codificacaoManchesterDiferencial(fluxoBrutoDeBits);//DECOFICACAO MANCHESTER DIFERENCIAL
+					break;
+			}
+			
 
 			MeioDeComunicacao.meioDeComunicacao(fluxoBrutoDeBits);
 		} catch (InterruptedException e) {
@@ -279,7 +280,7 @@ public class CamadaFisicaTransmissora {
       System.out.println("\tNumero de bits: " + numeroDeBits);
       System.out.println("\tDeslocamento: " + (32 - numeroDeBits) + " a esquerda");
 
-      numero (32 - numeroDeBits);
+      numero <<= (32 - numeroDeBits);
       System.out.println("\tBits do numero");
       imprimirBits(numero);
 
