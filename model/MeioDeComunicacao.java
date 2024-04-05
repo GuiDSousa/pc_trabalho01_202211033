@@ -2,7 +2,7 @@ package model;
 
 public class MeioDeComunicacao {
 	public static void meioDeComunicacao (int[] fluxoBrutoDeBits) {
-        System.out.println("Meio de Comunicação");
+        System.out.println("\n|Meio de Comunicação|\n");
         try {
             
             int [] fluxoBrutoDeBitsPontoA = fluxoBrutoDeBits;
@@ -40,6 +40,9 @@ public class MeioDeComunicacao {
                   }
                 }
             }
+            System.out.println("\n");
+            System.out.println("Fluxo Bruto de Bits Ponto B: ");
+            CamadaFisicaReceptora.camadaFisicaReceptora(fluxoBrutoDeBitsPontoB);
         }   catch (Exception e) {
             e.printStackTrace();
             System.out.println("Erro no meio de comunicação");

@@ -3,10 +3,8 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.SplitMenuButton?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.effect.Shadow?>
@@ -16,33 +14,20 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.telaController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="864.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.telaController">
    <children>
-      <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="1000.0">
-        <menus>
-          <Menu mnemonicParsing="false" text="File">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Sobre">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About" />
-            </items>
-          </Menu>
-        </menus>
-      </MenuBar>
-      <ImageView fitHeight="427.0" fitWidth="427.0" layoutX="54.0" layoutY="80.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#5140ce" height="700.0" layoutX="-4.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="872.0" />
+      <ImageView fitHeight="427.0" fitWidth="427.0" layoutX="-4.0" layoutY="13.0">
          <image>
-            <Image url="@../util/pc_transmissor.png" />
+            <Image url="@../pc_transmissor.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="427.0" fitWidth="427.0" layoutX="545.0" layoutY="80.0">
+      <ImageView fitHeight="427.0" fitWidth="427.0" layoutX="-4.0" layoutY="322.0">
          <image>
-            <Image url="@../util/pc_transmissor.png" />
+            <Image url="@../pc_transmissor.png" />
          </image>
       </ImageView>
-      <TextArea fx:id="transmissor" layoutX="198.0" layoutY="154.0" prefHeight="68.0" prefWidth="139.0" promptText="Digite e aperte no mouse para enviar" scrollLeft="1.0">
+      <TextArea fx:id="transmissor" blendMode="COLOR_BURN" layoutX="140.0" layoutY="87.0" prefHeight="68.0" prefWidth="139.0" promptText="Digite e aperte no mouse para enviar" scrollLeft="1.0" style="-fx-background-color: transparent; -fx-border-color: transparent;">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
@@ -53,16 +38,17 @@
             <Cursor fx:constant="TEXT" />
          </cursor>
       </TextArea>
-      <SplitMenuButton fx:id="menu" layoutX="400.0" layoutY="482.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="200.0" text="SELECIONAR CODIFICAÇÃO">
+      <SplitMenuButton fx:id="menu" blendMode="GREEN" graphicTextGap="7.0" layoutX="110.0" layoutY="15.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #bee700; -fx-border-color: #bee700;" text="SELECIONAR CODIFICAÇÃO">
         <items>
           <MenuItem fx:id="binario" mnemonicParsing="false" text="BINÁRIA" />
           <MenuItem fx:id="manchester" mnemonicParsing="false" text="MANCHESTER" />
             <MenuItem fx:id="manchesterDiferencial" mnemonicParsing="false" text="MANCHESTER DIFERENCIAL" />
         </items>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </SplitMenuButton>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="68.0" layoutX="690.0" layoutY="153.0" stroke="BLACK" strokeType="INSIDE" width="136.0" />
-      <Label fx:id="receptor" layoutX="693.0" layoutY="158.0" prefHeight="66.0" prefWidth="127.0" text="Label" textAlignment="CENTER" />
-      <Button fx:id="enviar" layoutX="400.0" layoutY="360.0" mnemonicParsing="false" onAction="#enviarButton" prefHeight="52.0" prefWidth="47.0" text="Button">
+      <Button fx:id="enviar" layoutX="336.0" layoutY="260.0" mnemonicParsing="false" onAction="#enviarButton" opacity="0.0" prefHeight="52.0" prefWidth="47.0" text="Button">
          <effect>
             <Shadow />
          </effect>
@@ -70,5 +56,22 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
+      <TextArea fx:id="receptor" blendMode="COLOR_BURN" layoutX="140.0" layoutY="396.0" prefHeight="96.0" prefWidth="139.0" scrollLeft="1.0" style="-fx-border-color: transparent; -fx-background-color: transparent;">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <font>
+            <Font size="15.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+      </TextArea>
+      <ProgressBar fx:id="progressBar" blendMode="COLOR_BURN" layoutX="140.0" layoutY="164.0" pickOnBounds="false" prefHeight="19.0" prefWidth="139.0" progress="0.0" style="-fx-border-color: transparent; -fx-background-color: transparent;" />
+      <ImageView fitHeight="107.0" fitWidth="139.0" layoutX="366.0" layoutY="183.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../caixa-de-texto.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

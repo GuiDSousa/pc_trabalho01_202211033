@@ -21,7 +21,7 @@ public class AplicacaoTransmissora {
             System.out.println("Mensagem: " + mensagem);
             CamadaAplicacaoTransmissora.camadaAplicacaoTransmissora(mensagem);
         } catch (Exception e) {
-            System.out.println("[ERRO] - Aplicacao Transmissora");
+            e.printStackTrace();
         }
     }
 }

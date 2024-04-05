@@ -3,7 +3,7 @@ package model;
 public class CamadaAplicacaoTransmissora {
     public static void camadaAplicacaoTransmissora (String mensagem) {
         int velocidade = 200;
-        System.out.println("Camada de Aplicação Transmissora");
+        System.out.println("\n|Camada de Aplicacao Transmissora:|\n");
         try { 
 
             char [] arrayCaracteres = mensagem.toCharArray();
@@ -11,13 +11,13 @@ public class CamadaAplicacaoTransmissora {
 
             for (int i = 0; i< arrayCaracteres.length; i++) {
                 quadro [i] = (int) arrayCaracteres[i];
-                System.out.println("\tCaractere [" + arrayCaracteres[i] + "] = " + quadro[i]);
+                System.out.println("Caractere ["+arrayCaracteres[i]+"] = ASCII [" + quadro[i] + "]");
                 Thread.sleep(velocidade);
             }
-
+            System.out.println("\n");
             CamadaFisicaTransmissora.camadaFisicaTransmissora(quadro);
         } catch (InterruptedException e) {
-            System.out.println("[ERRO] - Camada de Aplicação Transmissora");
+            System.out.println("Erro na Camada de Aplicação Transmissora");
         }
 }
 }
