@@ -14,20 +14,20 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="864.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.telaController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="919.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.telaController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#5140ce" height="700.0" layoutX="-4.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="872.0" />
-      <ImageView fitHeight="427.0" fitWidth="427.0" layoutX="-4.0" layoutY="13.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#5140ce" height="708.0" layoutX="-4.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="932.0" />
+      <ImageView fitHeight="427.0" fitWidth="427.0" layoutX="-4.0" layoutY="-7.0">
          <image>
             <Image url="@../pc_transmissor.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="427.0" fitWidth="427.0" layoutX="-4.0" layoutY="322.0">
+      <ImageView fitHeight="427.0" fitWidth="427.0" layoutX="-4.0" layoutY="302.0">
          <image>
             <Image url="@../pc_transmissor.png" />
          </image>
       </ImageView>
-      <TextArea fx:id="transmissor" blendMode="COLOR_BURN" layoutX="140.0" layoutY="87.0" prefHeight="68.0" prefWidth="139.0" promptText="Digite e aperte no mouse para enviar" scrollLeft="1.0" style="-fx-background-color: transparent; -fx-border-color: transparent;">
+      <TextArea fx:id="transmissor" blendMode="COLOR_BURN" layoutX="140.0" layoutY="67.0" prefHeight="68.0" prefWidth="139.0" promptText="Digite e aperte no mouse para enviar" scrollLeft="1.0" style="-fx-background-color: transparent; -fx-border-color: transparent;">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
@@ -38,7 +38,7 @@
             <Cursor fx:constant="TEXT" />
          </cursor>
       </TextArea>
-      <SplitMenuButton fx:id="menu" blendMode="GREEN" graphicTextGap="7.0" layoutX="110.0" layoutY="15.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #bee700; -fx-border-color: #bee700;" text="SELECIONAR CODIFICAÇÃO">
+      <SplitMenuButton fx:id="menu" blendMode="GREEN" graphicTextGap="7.0" layoutX="598.0" layoutY="289.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #bee700; -fx-border-color: #bee700;" text="SELECIONAR CODIFICAÇÃO">
         <items>
           <MenuItem fx:id="binario" mnemonicParsing="false" text="BINÁRIA" />
           <MenuItem fx:id="manchester" mnemonicParsing="false" text="MANCHESTER" />
@@ -48,7 +48,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </SplitMenuButton>
-      <Button fx:id="enviar" layoutX="336.0" layoutY="260.0" mnemonicParsing="false" onAction="#enviarButton" opacity="0.0" prefHeight="52.0" prefWidth="47.0" text="Button">
+      <Button fx:id="enviar" layoutX="336.0" layoutY="240.0" mnemonicParsing="false" onAction="#enviarButton" opacity="0.0" prefHeight="52.0" prefWidth="47.0" text="Button">
          <effect>
             <Shadow />
          </effect>
@@ -67,10 +67,51 @@
             <Cursor fx:constant="TEXT" />
          </cursor>
       </TextArea>
-      <ProgressBar fx:id="progressBar" blendMode="COLOR_BURN" layoutX="140.0" layoutY="164.0" pickOnBounds="false" prefHeight="19.0" prefWidth="139.0" progress="0.0" style="-fx-border-color: transparent; -fx-background-color: transparent;" />
-      <ImageView fitHeight="107.0" fitWidth="139.0" layoutX="366.0" layoutY="183.0" pickOnBounds="true" preserveRatio="true">
+      <ProgressBar fx:id="progressBar" blendMode="COLOR_BURN" layoutX="140.0" layoutY="144.0" pickOnBounds="false" prefHeight="19.0" prefWidth="139.0" progress="0.0" style="-fx-border-color: transparent; -fx-background-color: transparent;" />
+      <ImageView fitHeight="113.0" fitWidth="139.0" layoutX="363.0" layoutY="149.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../caixa-de-texto.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="104.0" fitWidth="356.0" layoutX="520.0" layoutY="409.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../ondas.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="onda_1" fitHeight="70.0" fitWidth="48.0" layoutX="542.0" layoutY="424.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../binário-0.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="onda_2" fitHeight="70.0" fitWidth="48.0" layoutX="594.0" layoutY="424.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../binário-0.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="onda_3" fitHeight="70.0" fitWidth="48.0" layoutX="646.0" layoutY="424.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../binário-0.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="onda_4" fitHeight="70.0" fitWidth="48.0" layoutX="698.0" layoutY="424.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../binário-0.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="onda_5" fitHeight="70.0" fitWidth="48.0" layoutX="752.0" layoutY="424.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../binário-0.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="onda_6" fitHeight="70.0" fitWidth="48.0" layoutX="805.0" layoutY="424.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../binário-0.png" />
+         </image>
+      </ImageView>
+      <TextArea fx:id="binary" layoutX="540.0" layoutY="354.0" prefHeight="37.0" prefWidth="309.0" />
+      <ImageView fitHeight="228.0" fitWidth="393.0" layoutX="502.0" layoutY="154.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../LOGO.png" />
          </image>
       </ImageView>
    </children>

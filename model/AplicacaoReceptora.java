@@ -8,7 +8,7 @@ public class AplicacaoReceptora {
         System.out.println("Aplicação Receptora: ");
 
         try {
-            System.out.println("\tMensagem recebida: " + mensagem);
+            System.out.println("Mensagem recebida: " + mensagem);
             new telaController().addMesage(mensagem);
         } catch (Exception e) {
             System.out.println("Fim da aplicação receptora");

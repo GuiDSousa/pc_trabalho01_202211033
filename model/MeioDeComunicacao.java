@@ -11,7 +11,7 @@ public class MeioDeComunicacao {
 
             for (int indicePosicao = 0; indicePosicao < fluxoBrutoDeBits.length; indicePosicao++) {
                 int numero = fluxoBrutoDeBitsPontoA[indicePosicao];
-                int numeroDeBits = Integer.toBinaryString(numero).length();
+                int numeroDeBits = CamadaFisicaReceptora.getNumberOfBits(numero);
 
                 if (numeroDeBits <= 8) {
                     numeroDeBits = 8;
@@ -41,7 +41,7 @@ public class MeioDeComunicacao {
                 }
             }
             System.out.println("\n");
-            System.out.println("Fluxo Bruto de Bits Ponto B: ");
+            System.out.println("Fluxo Bruto de Bits Ponto B:\n ");
             CamadaFisicaReceptora.camadaFisicaReceptora(fluxoBrutoDeBitsPontoB);
         }   catch (Exception e) {
             e.printStackTrace();

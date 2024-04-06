@@ -3,7 +3,7 @@ package model;
 public class CamadaFisicaTransmissora {
 	public static void camadaFisicaTransmissora(int[] quadro) {
 		int velocidade = 200;
-		System.out.println("|Camada Física Transmissora|");
+		System.out.println("|Camada Física Transmissora|\n");
 
 		try {
 			Thread.sleep(velocidade);
@@ -11,7 +11,7 @@ public class CamadaFisicaTransmissora {
 			System.out.println("Bits por inteiro: \n");
 
 			for (int c : quadro) {
-				System.out.println("Inteiro [" + c + "]" + " = " + imprimirBits(c));
+				System.out.println("Inteiro [" + c + "]" + " = " + imprimirBits(c) + "\n");
 				Thread.sleep(velocidade);
 			}
 
@@ -28,7 +28,7 @@ public class CamadaFisicaTransmissora {
 
 			Thread.sleep(velocidade);
 			Thread.sleep(velocidade);
-			System.out.println("\n\tBits Brutos Codificados: ");
+			System.out.println("Bits Brutos Codificados: \n");
 
 			for (int b: fluxoBrutoDeBits) {
 				System.out.println(imprimirBits(b) + "\n");
@@ -38,20 +38,20 @@ public class CamadaFisicaTransmissora {
 
 			switch (AplicacaoTransmissora.tipoDeCodificacao) {
 				case AplicacaoTransmissora.BINARIA:
-					System.out.println("\n|Codificacao Binaria|\n");
+					System.out.println("|Codificacao Binaria|\n");
 					fluxoBrutoDeBits = codificacaoBinaria(fluxoBrutoDeBits);//DECOFICACAO BINARIA
 					break;
 				case AplicacaoTransmissora.MANCHESTER:
-					System.out.println("\n|Codificacao Manchester|\n");
+					System.out.println("|Codificacao Manchester|\n");
 					fluxoBrutoDeBits = codificacaoManchester(fluxoBrutoDeBits);//DECOFICACAO MANCHESTER
 					break;
 				case AplicacaoTransmissora.MANCHESTER_DIFERENCIAL:
-					System.out.println("\n|Codificacao Manchester Diferencial|\n");
+					System.out.println("|Codificacao Manchester Diferencial|\n");
 					fluxoBrutoDeBits = codificacaoManchesterDiferencial(fluxoBrutoDeBits);//DECOFICACAO MANCHESTER DIFERENCIAL
 					break;
 			}
 
-			System.out.println("\n\tBits Brutos Codificados: ");
+			System.out.println("Bits Brutos Codificados: \n");
 			Thread.sleep(velocidade);
 
 			for (int b: fluxoBrutoDeBits) {
@@ -99,7 +99,7 @@ public class CamadaFisicaTransmissora {
 	}
 
 	public static int[] codificacaoBinaria(int[] quadro) {
-		System.out.println("\t|Codificação Binária|");
+		System.out.println("|Codificação Binária|\n");
 		
 		int [] vetorCodificado = new int [quadro.length];
 
@@ -109,8 +109,8 @@ public class CamadaFisicaTransmissora {
 
 		while (posicaoQuadro < quadro.length) {
 			int numero = quadro[posicaoQuadro];
-			int numeroDeBits = Integer.toBinaryString(numero).length();
-			System.out.println("\t\tNúmero de bits: " + numeroDeBits);
+			int numeroDeBits = getNumberOfBits(numero);
+			System.out.println("Número de bits: " + numeroDeBits);
 
 			if (numeroDeBits<=8) {
 				numero =8;
@@ -122,14 +122,14 @@ public class CamadaFisicaTransmissora {
 				numeroDeBits = 32;
 			}
 
-			System.out.println("\\tNúmero de bits: " + numeroDeBits);
-			System.out.println("\t\tDeslocamento: " + (32-numeroDeBits) + " a esquerda");
+			System.out.println("Número de bits: " + numeroDeBits);
+			System.out.println("Deslocamento: " + (32-numeroDeBits) + " a esquerda");
 		
 			numero <<= (32 - numeroDeBits);	
-			System.out.println("\t\tBits do numero");
+			System.out.println("Bits do numero");
 			imprimirBits(numero);
 
-			System.out.println("\t\tBit a Bit do numero");
+			System.out.println("Bit a Bit do numero");
 
 			int novoInteiro = 0;
 
@@ -146,10 +146,10 @@ public class CamadaFisicaTransmissora {
 				}
 
 				if ( i == numeroDeBits) {
-					System.out.println("\n\t\tNovo inteiro: ");
+					System.out.println("\nNovo inteiro: ");
 					imprimirBits(novoInteiro);
 					vetorCodificado[posicaoCodificado] = novoInteiro;
-					System.out.println("\t\t");
+					System.out.println("\n");
 				}
 			}
 
@@ -160,10 +160,10 @@ public class CamadaFisicaTransmissora {
 	}
 
 	private static int[] codificacaoManchester(int[] quadro) {
-		System.out.println("\t|Codificacao Manchester|");
+		System.out.println("\n|Codificacao Manchester|");
 
 		int reduzir = 0;
-		int numeroDeBitsUltimoInteiro = Integer.toBinaryString(quadro[quadro.length - 1]).length();
+		int numeroDeBitsUltimoInteiro = getNumberOfBits(quadro[quadro.length - 1]);
 
 		if (numeroDeBitsUltimoInteiro <= 6) {
 			reduzir = 1;
@@ -182,7 +182,7 @@ public class CamadaFisicaTransmissora {
 		while (posicaoQuadro < quadro.length) {
 			int numero = quadro[posicaoQuadro];
 
-			int numeroDeBits = Integer.toBinaryString(numero).length();
+			int numeroDeBits = getNumberOfBits(numero);
 			System.out.println("\t\tNumero de bits: " + numeroDeBits);
 
 			if (numeroDeBits <=8) {
@@ -195,14 +195,14 @@ public class CamadaFisicaTransmissora {
 				numeroDeBits = 32;
 			}
 
-			System.out.println("\t\tNumero de bits: " + numeroDeBits);	
-			System.out.println("\t\tDeslocamento: " + (32 - numeroDeBits) + " a esquerda");
+			System.out.println("Numero de bits: " + numeroDeBits);	
+			System.out.println("Deslocamento: " + (32 - numeroDeBits) + " a esquerda");
 
 			numero <<= (32 - numeroDeBits);
-			System.out.println("\t\tBits do numero");
+			System.out.println("Bits do numero");
 			imprimirBits(numero);
 
-			System.out.println("\n\t\tBit a Bit do numero");
+			System.out.println("Bit a Bit do numero");
 
 
 			for ( int i = 1; i <= numeroDeBits; i++) {
@@ -229,19 +229,19 @@ public class CamadaFisicaTransmissora {
 				}
 
 				if ( i == 16) {
-					System.out.println ("\n\t\tNovo inteiro: ");
+					System.out.println ("\nNovo inteiro: ");
 					imprimirBits(novoInteiro);
 					vetorCodificado[posicaoCodificado] = novoInteiro;
 					novoInteiro = 0;
 					posicaoCodificado++;
-					System.out.println("\t\tBit a Bit do Numero");
+					System.out.println("Bit a Bit do Numero");
 				} else if (i == numeroDeBits) {
-					System.out.println("\n\t\tNovo inteiro: ");
+					System.out.println("\nNovo inteiro: ");
 					imprimirBits(novoInteiro);
 					vetorCodificado[posicaoCodificado] = novoInteiro;
 					novoInteiro = 0;
 					posicaoCodificado++;
-					System.out.println("\t\tBit a Bit do Numero");
+					System.out.println("Bit a Bit do Numero");
 				}
 			}
 			System.out.println();
@@ -254,7 +254,7 @@ public class CamadaFisicaTransmissora {
     System.out.println("\t|Codificação Manchester Diferencial|");
 
     int reduzir = 0;
-    int numeroDeBitsUltimoInteiro = Integer.toBinaryString(quadro[quadro.length - 1]).length();
+    int numeroDeBitsUltimoInteiro = getNumberOfBits(quadro[quadro.length - 1]);
 
     if (numeroDeBitsUltimoInteiro <= 16) {
       reduzir = 1;
@@ -275,8 +275,8 @@ public class CamadaFisicaTransmissora {
     while (posicaoQuadro < quadro.length) {
       int numero = quadro[posicaoQuadro];
 
-      int numeroDeBits = Integer.toBinaryString(numero).length();
-      System.out.println("\t\tNumero de bits: " + numeroDeBits);
+      int numeroDeBits = getNumberOfBits(numero);
+      System.out.println("Numero de bits: " + numeroDeBits);
 
       if (numeroDeBits <= 8) {
         numeroDeBits = 8;
@@ -288,14 +288,14 @@ public class CamadaFisicaTransmissora {
         numeroDeBits = 32;
       }
 
-      System.out.println("\t\tNumero de bits: " + numeroDeBits);
-      System.out.println("\t\tDeslocamento: " + (32 - numeroDeBits) + " a esquerda");
+      System.out.println("Numero de bits: " + numeroDeBits);
+      System.out.println("Deslocamento: " + (32 - numeroDeBits) + " a esquerda");
 
       numero <<= (32 - numeroDeBits);
-      System.out.println("\t\tBits do numero");
+      System.out.println("Bits do numero");
       imprimirBits(numero);
 
-      System.out.println("\n\t\tBit a Bit do numero");
+      System.out.println("\nBit a Bit do numero");
 
 
       for (int i = 1; i <= numeroDeBits; i++) {
@@ -324,19 +324,19 @@ public class CamadaFisicaTransmissora {
         numero <<= 1;
 
         if (i == 16) {
-          System.out.println("\n\t\tNovo inteiro: ");
+          System.out.println("\nNovo inteiro: ");
           imprimirBits(novoInteiro);
           vetorCodificado[posicaoCodificado] = novoInteiro;
           novoInteiro = 0;
           posicaoCodificado++;
-          System.out.println("\t\tBit a Bit do Numero");
+          System.out.println("Bit a Bit do Numero");
         } else if (i == numeroDeBits) {
-          System.out.println("\n\t\tNovo inteiro: ");
+          System.out.println("\nNovo inteiro: ");
           imprimirBits(novoInteiro);
           vetorCodificado[posicaoCodificado] = novoInteiro;
           novoInteiro = 0;
           posicaoCodificado++;
-          System.out.println("\t\tBit a Bit do Numero");
+          System.out.println("Bit a Bit do Numero");
         }
       }
       System.out.println();
@@ -364,4 +364,18 @@ public class CamadaFisicaTransmissora {
     System.out.println();
     return bits;
   }
+
+  public static int getNumberOfBits(int number) {
+    if (number == 0) {
+        return 1;
+    }
+
+    int numberOfBits = 0;
+    while (number > 0) {
+        numberOfBits++;
+        number >>= 1;
+    }
+
+    return numberOfBits;
+}
 }

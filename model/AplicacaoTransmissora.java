@@ -13,6 +13,10 @@ public class AplicacaoTransmissora {
         AplicacaoTransmissora.tipoDeCodificacao = tipoDeCodificacao;
     }
 
+    public static int getTipoDeCodificacao() {
+        return tipoDeCodificacao;
+    }
+
     
 
     public static void aplicacaoTransmissora (String mensagem) {

@@ -12,7 +12,7 @@ public class CamadaAplicacaoReceptora {
             // Adicionando o caractere referente ao valor inteiro da Tabela [ASCII]
             for (int i = 0; i < quadro.length; i++) {
                 arrayCaracteres[i] = (char) quadro[i];
-                System.out.println("\tCaractere [" + arrayCaracteres[i] + "] = [ASCII] " + quadro[i] + "\n");
+                System.out.println("Caractere [" + arrayCaracteres[i] + "] = [ASCII] " + quadro[i] + "\n");
                 mensagem += arrayCaracteres[i];
                 Thread.sleep(velocidade);
             }

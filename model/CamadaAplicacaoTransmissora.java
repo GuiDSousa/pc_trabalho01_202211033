@@ -3,7 +3,7 @@ package model;
 public class CamadaAplicacaoTransmissora {
     public static void camadaAplicacaoTransmissora (String mensagem) {
         int velocidade = 200;
-        System.out.println("\n|Camada de Aplicacao Transmissora:|\n");
+        System.out.println("|Camada de Aplicacao Transmissora:|\n");
         try { 
 
             char [] arrayCaracteres = mensagem.toCharArray();
